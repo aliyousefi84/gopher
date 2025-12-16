@@ -4,14 +4,15 @@ import (
 	"os"
 
 	"github.com/aliyousefi84/gopher/cli"
-	"github.com/aliyousefi84/gopher/downloader"
+	"github.com/aliyousefi84/gopher/service"
+	"github.com/aliyousefi84/gopher/store"
 )
 
 func main () {
-	d := downloader.Newdownloader("/home/ali/Downloads/")
-	cli := cli.Newcli(d)
-	
+	db := store.NewDB()
+	svc := service.Newsvc(db)
+	roorcli := cli.Newcli(svc)
 	if len(os.Args) > 1 {
-		cli.Cmd(os.Args[1:])
+		roorcli.Cmd(os.Args[1:])
 	}
 }

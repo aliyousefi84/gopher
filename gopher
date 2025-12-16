@@ -1,0 +1,44 @@
+[
+  {
+    "Name": "WinRAR",
+    "Cap": 3576637,
+    "DownloadTime": "2025-12-16T19:56:55Z",
+    "FileType": ".zip?",
+    "Hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "Name": "Google",
+    "Cap": 95886086,
+    "DownloadTime": "2025-12-16T20:01:25Z",
+    "FileType": ".zip?",
+    "Hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "Name": "Google",
+    "Cap": 95886086,
+    "DownloadTime": "2025-12-16T20:10:31Z",
+    "FileType": ".zip?",
+    "Hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "Name": "Google",
+    "Cap": 95886086,
+    "DownloadTime": "2025-12-16T20:12:13Z",
+    "FileType": ".zip?",
+    "Hash": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+    "Name": "Google",
+    "Cap": 95886086,
+    "DownloadTime": "2025-12-16T20:16:02Z",
+    "FileType": ".zip?",
+    "Hash": "7f59f1eaa5889a69e5787132121231de65f587722efb5c4f8f5fdaef5ba610a7"
+  },
+  {
+    "Name": "Google",
+    "Cap": 95886086,
+    "DownloadTime": "2025-12-16T20:22:13Z",
+    "FileType": ".zip?",
+    "Hash": "7f59f1eaa5889a69e5787132121231de65f587722efb5c4f8f5fdaef5ba610a7"
+  }
+]

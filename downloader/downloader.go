@@ -15,19 +15,19 @@ type Downloader struct {
 func Newdownloader (path string) Downloader {
 	return Downloader{path: path}
 }
-// concurrency pattern
-func (d *Downloader) Download(name,url string) {
-	file , err := os.OpenFile(d.path + name , os.O_CREATE | os.O_WRONLY , 0644)
-	if err!=nil {
-		panic(err)
-	}
-	defer file.Close()
-	resp , err := http.Get(url)
+
+func (d *Downloader) Download(url string,file *os.File) {
+	req , err := http.NewRequest("GET" , url,nil)
 	if err!=nil {
 		fmt.Println(err)
 		os.Exit(1)
 	}
-	defer resp.Body.Close()
+	client := http.Client{}
+	resp , err := client.Do(req)
+	if err!=nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
 	io.Copy(file , resp.Body)
-
+	
 }
