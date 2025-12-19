@@ -12,6 +12,7 @@ import (
 	"github.com/aliyousefi84/gopher/models"
 	"github.com/aliyousefi84/gopher/pathparser"
 	"github.com/aliyousefi84/gopher/store"
+	"github.com/aliyousefi84/gopher/ui"
 )
 
 var (
@@ -20,6 +21,7 @@ var (
 )
 
 type Svc struct {
+	hashlist []string
 	downloadlist []models.DownloadList
 	download downloader.Downloader
 	db *store.DB
@@ -65,4 +67,38 @@ func (s *Svc) DownloadFile (url string) {
 	)
 	s.downloadlist = append(s.downloadlist, *datamodel)
 	s.db.Save(dbpath , &s.downloadlist)
+}
+
+func (s *Svc) ShowHash (filepath string) {
+	file , err := os.Open(filepath)
+	if err!=nil {
+		fmt.Println(err)
+	}
+	defer file.Close()
+	data , _ := io.ReadAll(file)
+	hash := sha256.Sum256(data)
+	fmt.Println(hex.EncodeToString(hash[0:]))
+}
+
+func (s *Svc) DeleteFromDownloadList (index int) {
+	err := s.db.Load(dbpath,&s.downloadlist)
+	if err!=nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
+	s.downloadlist = append(s.downloadlist[:index],s.downloadlist[index+1:]...)
+	err = s.db.Save(dbpath,&s.downloadlist)
+	if err!=nil {
+		fmt.Println(err)
+		os.Exit(1)
+	}
+}
+
+func (s *Svc) ShowData () {
+	err := s.db.Load(dbpath , &s.downloadlist)
+	if err!=nil {
+		fmt.Println("database is not initiailizing")
+		os.Exit(1)
+	}
+	ui.Showuser(&s.downloadlist)
 }
